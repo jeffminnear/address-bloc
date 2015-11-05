@@ -14,6 +14,7 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - Exit"
+    puts "6 - Eradicate entries"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -38,6 +39,8 @@ class MenuController
     when 5
       puts "Good-bye!"
       exit(0)
+    when 6
+      eradicate_entries
     else
       system "clear"
       puts "Sorry, that is not a valid input"
@@ -160,7 +163,7 @@ class MenuController
   end
 
   def edit_entry(entry)
-    puts "To leave a value unchanged, simply press RETURN"
+    puts "To leave a value unchanged, simply press <RETURN>"
     print "Updated name: "
     name = gets.chomp
     print "Updated phone number: "
@@ -175,5 +178,23 @@ class MenuController
 
     puts "Updated entry:"
     puts entry
+  end
+
+  def eradicate_entries
+    system "clear"
+    puts "Are you sure you want to delete all entries?"
+    print "Type KABOOM to proceed: "
+    confirmation = gets.chomp
+    case confirmation
+    when "KABOOM"
+      @address_book.entries.clear
+      system "clear"
+      puts "All entries deleted"
+      main_menu
+    else
+      system "clear"
+      puts "Entries not deleted"
+      main_menu
+    end
   end
 end
