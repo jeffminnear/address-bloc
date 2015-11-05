@@ -160,7 +160,7 @@ class MenuController
   end
 
   def edit_entry(entry)
-    puts "To leave a value unchanged, simply press RETURN"
+    puts "To leave a value unchanged, simply press <RETURN>"
     print "Updated name: "
     name = gets.chomp
     print "Updated phone number: "
