@@ -75,6 +75,30 @@ RSpec.describe AddressBook do
       entry_five = book.entries[4]
       check_entry(entry_five, 'Sussie', '555-555-2036', 'sussie@blocmail.com')
     end
+
+    it "imports the second csv file" do
+      book.import_from_csv("entries_2.csv")
+      book_size = book.entries.size
+      expect(book_size).to eq(3)
+    end
+
+    it "imports the 1st new entry" do
+      book.import_from_csv("entries_2.csv")
+      entry_one_new = book.entries[0]
+      check_entry(entry_one_new, 'Franky', '636-363-6363', 'franky@here.com')
+    end
+
+    it "imports the 2nd new entry" do
+      book.import_from_csv("entries_2.csv")
+      entry_two_new = book.entries[1]
+      check_entry(entry_two_new, 'Jim', '414-141-4141', 'jim@here.com')
+    end
+
+    it "imports the 3rd new entry" do
+      book.import_from_csv("entries_2.csv")
+      entry_three_new = book.entries[2]
+      check_entry(entry_three_new, 'Steve', '525-252-5252', 'steve@here.com')
+    end
   end
 
   describe "#binary_search" do
